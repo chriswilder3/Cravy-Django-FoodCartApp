@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-800  text-white flex flex-col ">
+    
+    <nav class="flex flex-row m-4 p-4 text-xl gap-3">
+        <a href="">
+            About
+        </li>
+        <a href="">
+            Login
+        </a>
+    </nav>
+    
+    <h1 class=" text-4xl m-4 font-bold">
+        Welcome to Cravy!
+    </h1>
+
+    <div class=" m-4 grid grid-cols-4">
+       
+            {% for item in items %}
+            <div class=" bg-red-400 m-3 p-4 rounded">
+                <a href="">
+                    <p class="text-2xl"> {{item.name}} </p>
+                    
+                    <p> {{item.description}}</p> 
+                    <p> {{item.price}} </p>
+                </a>
+            </div>
+            {% endfor %}
+    </div>
+    
+</body>
+</html>
