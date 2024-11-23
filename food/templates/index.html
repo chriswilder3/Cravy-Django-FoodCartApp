@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <style>
         body{
             font-family: "Montserrat", sans-serif;
@@ -31,14 +33,23 @@
 <body class=" text-white flex flex-col bg-gradient-to-b from-slate-800 to-zinc-700 bg-no-repeat
     min-h-screen">
     <!-- bg-gradient-to-b from-slate-800 to-zinc-700 bg-no-repeat -->
-    <nav class="flex flex-row m-4 px-4 py-3 text-xl gap-5">
-        <a href="{% url 'home' %}">
-            Home
+    <nav class="flex flex-row m-4 px-4 py-3 text-xl gap-7  items-center">
+
+        <a href="{% url 'food:home' %}" class=" border-2 border-transparent 
+                    transition delay-60 hover:-translate-y-1  hover:border-white rounded ">
+            <img class="w-32 h-24" src="{% static 'logo3.png' %}" alt="">
         </a>
-        <a href="">
+        <a href=" " class=" 
+                    transition delay-60 rotate-90 mr-3 hover:scale-110 hover:animate-pulse ">
+            |||
+        </a>
+        
+        <a href="" class="border-b-2 border-transparent ml-auto 
+                    transition delay-60 hover:-translate-y-2 hover:scale-110 hover:border-white">
             About
         </a>
-        <a href="">
+        <a href="" class="border-b-2 border-transparent mr-20
+                    transition delay-60 hover:-translate-y-2 hover:scale-110 hover:border-white">
             Login
         </a>
     </nav>
@@ -51,13 +62,14 @@
 
             {% for item in items %}
             
-            <div class="bg-red-500  m-3 p-4 rounded">
+            <div class="bg-red-500 m-3 p-4 rounded transition delay-60 hover:-translate-y-2 
+                                    hover:scale-110 hover:border-white hover:text-amber-300 hover:bg-red-500">
                 <!-- bg-gradient-to-b from-red-500 to-orange-500 -->
-                <a href=" {% url 'item_details' item.id %}">
+                <a href=" {% url 'food:item_details' item.id %}">
                     <p class="text-2xl font-semibold"> {{item.name}} </p>
                     
                     <p> {{item.description}}</p> 
-                    <p class=" text-black"> &#8377 {{item.price}} </p>
+                    <p class=" text-black font-bold"> &#8377 {{item.price}} </p>
                 </a>
             </div>
             {% endfor %}
