@@ -10,7 +10,15 @@ def home(request):
     context = {
         'items':items,
     }
+    # print(items.values())
     return render(request, 'index.html', context)
 
 def item(request):
     return HttpResponse('Items')
+
+def item_details( request, id):
+    item = Item.objects.get(id =id)
+    context = {
+        'item':item,
+    }
+    render( request, 'item_details.html', context)
