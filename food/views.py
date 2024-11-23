@@ -21,4 +21,4 @@ def item_details( request, id):
     context = {
         'item':item,
     }
-    render( request, 'item_details.html', context)
+    return render( request, 'item_details.html', context)

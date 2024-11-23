@@ -32,14 +32,17 @@
     min-h-screen">
     <!-- bg-gradient-to-b from-slate-800 to-zinc-700 bg-no-repeat -->
     <nav class="flex flex-row m-4 px-4 py-3 text-xl gap-5">
+        <a href="{% url 'home' %}">
+            Home
+        </a>
         <a href="">
             About
-        </li>
+        </a>
         <a href="">
             Login
         </a>
     </nav>
-    
+    {% block content %}
     <h1 class="welcome text-4xl  m-4 mb-2 font-bold m ">
         Welcome to Cravy.
     </h1>
@@ -59,6 +62,6 @@
             </div>
             {% endfor %}
     </div>
-    
+    {% endblock %}
 </body>
 </html>
