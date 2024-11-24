@@ -13,11 +13,12 @@
                                     hover:scale-110 hover:border-white hover:text-amber-300 hover:bg-red-500">
                 <!-- bg-gradient-to-b from-red-500 to-orange-500 -->
                 <a href=" {% url 'food:item_details' item.id %}">
-                    <img class=" h-40 justify-center border-white border-2 " src="{{item.image.url}}" alt="">
-                    <p class="text-wrap text-2xl font-semibold"> {{item.name}} </p>
+                    <img class=" h-40 mx-auto border-white border-2 " src="{{item.image.url}}" alt="">
+                    <p class="text-wrap text-2xl py-1 font-semibold"> {{item.name}} </p>
                     
                     <!-- <p> {{item.description}}</p>  -->
-                    <p class=" text-black font-bold"> &#8377 {{item.price}} </p>
+                    <p class=" bg-green-400 text-xl font-semibold rounded p-1 mr-4"> 
+                            &#8377 {{item.price}} </p>
                 </a>
             </div>
             {% endfor %}
