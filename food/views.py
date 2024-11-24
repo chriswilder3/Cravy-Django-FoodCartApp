@@ -22,3 +22,8 @@ def item_details( request, id):
         'item':item,
     }
     return render( request, 'item_details.html', context)
+
+def add_item( request ):
+    if request.method == 'GET':
+        
+        render(request, 'add_item.html')

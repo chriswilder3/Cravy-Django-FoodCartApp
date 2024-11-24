@@ -1,0 +1,8 @@
+{% extends 'master.html' %}
+
+{% block content %}
+    <form action="">
+        {% csrf_token %}
+        {% form_as_p %}
+    </form>
+{% endblock %}
