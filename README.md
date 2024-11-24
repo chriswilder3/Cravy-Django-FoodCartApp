@@ -20,21 +20,19 @@
 - **Design**: Responsive and modern UI with Tailwind CSS
 
 ---
+##  Future Enhancements
+- Add a Cart page for managing selected items.
+- Implement Checkout functionality with payment integration.
+- Add User Authentication for personalized experiences.
+- Enable Search and Filter options for the item catalog.
+- Include Order History for registered users.
 
-## 📂 Project Structure
-```plaintext
-Cravy/
-├── cravy/                  # Main Django project folder
-│   ├── settings.py         # Project settings
-│   ├── urls.py             # Project URLs
-│   └── wsgi.py             # WSGI entry point
-├── foodstore/              # Django app folder
-│   ├── migrations/         # Database migrations
-│   ├── templates/          # HTML templates
-│   ├── static/             # Tailwind CSS, JavaScript, and images
-│   ├── views.py            # App views for pages
-│   ├── models.py           # Database models
-│   └── urls.py             # App-specific URLs
-├── manage.py               # Django management script
-└── README.md               # Project documentation
-```
+## Current Progress
+- ![ Index page (phase-1) ](index1.png)
+- ![ Index page (phase-2) ](index2.png)
+- ![ Index page (phase-3) ](index3.png)
+
+
+## Contact
+- Email: ronhartforddelta19@gmail.com
+- GitHub: chriswilder3
