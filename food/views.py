@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from.models import Item
+from .models import Item
+from .forms import AddItemForm
 
 # Create your views here.
 
@@ -23,7 +24,9 @@ def item_details( request, id):
     }
     return render( request, 'item_details.html', context)
 
-def add_item( request ):
+def add_item(request):
     if request.method == 'GET':
-        
-        render(request, 'add_item.html')
+        # Remember we need to intiate the form here
+        # then send it as context to the page
+        form = AddItemForm()
+        return render(request, 'add_item.html', {'form': form})

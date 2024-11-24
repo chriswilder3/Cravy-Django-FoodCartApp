@@ -13,6 +13,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('item/', views.item, name = 'item'),
     path('item_details/<int:id>', views.item_details, name='item_details'),
-    path('item/add', views.add_item, name="add_item"),
+    path('item/add', views.add_item, name='add_item'),
 
 ]

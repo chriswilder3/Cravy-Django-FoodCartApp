@@ -1,8 +1,11 @@
 {% extends 'master.html' %}
-
+    <style>
+        
+    </style>
 {% block content %}
-    <form action="">
+    <form class="bg-orange-400 text-lg text-black font-medium [>]: " action="">
         {% csrf_token %}
-        {% form_as_p %}
+        {{ form }}
+        <button type="submit" > Submit</button>
     </form>
 {% endblock %}
