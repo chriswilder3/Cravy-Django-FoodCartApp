@@ -1,11 +1,30 @@
 {% extends 'master.html' %}
-    <style>
-        
-    </style>
+    
 {% block content %}
-    <form class="bg-orange-400 text-lg text-black font-medium [>]: " action="">
+    <form method="post" class="flex flex-col justify-center bg-red-500 p-4 mx-auto  w-1/3 text-xl text-black font-semibold 
+            [&>*]:p-2  rounded-md [&>input]:rounded" action="{% url 'food:add_item' %}"
+            enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit" > Submit</button>
+
+        <label class="text-amber-300 mt-2" for="{{form.name.id_for_label}}"> Enter item name </label> 
+        {{ form.name }}
+        {{form.name.errors}}
+
+        <label class="text-amber-300 mt-2" for="{{form.description.id_for_label}}"> Enter description </label>
+        {{form.description}}
+        {{form.description.errors}}
+
+        <label class="text-amber-300 mt-2" for="{{form.price.id_for_label}}"> Enter item price</label>
+        {{form.price}}
+        {{form.price.errors}}
+
+        <label class="text-amber-300 mt-2" for="{{form.image.id_for_label}}"> Select food image</label>
+        {{form.image}}
+        {{form.image.errors}}
+
+        <button type="submit" class="flex-none min-w-40 my-3 p-2 mx-auto  text-white bg-slate-700
+                        transition delay-60 hover:scale-105 hover:-translate-y-1 hover:bg-slate-900 hover:text-white  rounded-full" >
+             Submit
+        </button>
     </form>
 {% endblock %}

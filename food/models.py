@@ -8,6 +8,11 @@ class Item(models.Model):
     price = models.IntegerField()
     image = models.ImageField(upload_to = 'product_images/', null= True)
 
+    # Remember, When including image/media ie, When handling file uploads 
+    # the form must include the attribute enctype="multipart/form-data".
+    # Without it, the uploaded file won't be included in the request.
+
     def __str__(self):
         return f" {self.name}"
+
 
