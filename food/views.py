@@ -119,8 +119,8 @@ def update_item( request, id):
             # the additem template but with current instance of form passed.
             context = {
                 'form':form,
-                'item',item,
+                'item':item,
                 'update': True,
             }
-            return render( request, 'add_item.html', {'form'})
+            return render( request, 'add_item.html', context)
 

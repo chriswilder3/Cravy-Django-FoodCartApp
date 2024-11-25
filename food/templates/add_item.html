@@ -1,10 +1,35 @@
 {% extends 'master.html' %}
     
 {% block content %}
-    <form method="post" class="flex flex-col justify-center bg-red-500 p-4 mx-auto  w-1/3 text-xl text-black font-semibold 
+    <form method="post" class="flex flex-col justify-center bg-red-500 mb-2 p-4 mx-auto  w-1/3 text-xl text-black font-semibold 
             [&>*]:p-2  rounded-md [&>input]:rounded" action="{% url 'food:add_item' %}"
             enctype="multipart/form-data">
         {% csrf_token %}
+        <!-- We want to display heading based on whether update flag is T/F -->
+        <h3 class="text-amber-400 font-bold text-2xl text-center"> 
+            {{ update|default:False|yesno:'Update item,Add Item'}}</h3>
+        
+        <!-- The above expression is Django template filter chain.
+        update: 
+        This is the context variable passed from the view. Ex: {'update': True}
+        It determines whether the operation is an update or add action.
+        If update is True, the operation is "Update Item."
+        If update is False or missing, the operation is "Add Item."
+    
+        |default:False:
+        This is a Django template filter that provides a default value if 
+        update is not defined or evaluates to None.
+        Ensures that the template logic works even if the update variable is not passed explicitly.
+        In this case, if update is missing, it defaults to False.
+        Remember in the case of add_item view, we had to pass update flag
+        but we dont have to do that now, since it will be set to false by default
+
+        |yesno:"Update Item,Add Item":
+        This is another Django filter that works like a conditional statement:
+        If update is True, it returns the first value: "Update Item".
+        If update is False, it returns the second value: "Add Item".
+        Remember its values must be in single string seperate by comma  -->
+
 
         <label class="text-amber-300 mt-2" for="{{form.name.id_for_label}}"> Enter item name </label> 
         {{ form.name }}
@@ -22,7 +47,7 @@
         {{form.image}}
         {{form.image.errors}}
 
-        <button type="submit" class="flex-none min-w-40 my-3 p-2 mx-auto  text-white bg-slate-700
+        <button type="submit" class="flex-none min-w-40 mt-3 mb-1 p-2 mx-auto  text-white bg-slate-700
                         transition delay-60 hover:scale-105 hover:-translate-y-1 hover:bg-slate-900 hover:text-white  rounded-full" >
              Submit
         </button>
