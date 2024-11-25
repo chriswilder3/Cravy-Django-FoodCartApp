@@ -32,6 +32,12 @@
 - ![ Index page (phase-2) ](index2.png)
 - ![ Index page (phase-3) ](index3.png)
 
+- ![Item details](item_details.png)
+
+- ![Add item](additem_form.png)
+- ![Update item](updateitem_form.png)
+
+
 
 ## Contact
 - Email: ronhartforddelta19@gmail.com
