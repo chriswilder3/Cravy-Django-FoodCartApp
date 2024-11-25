@@ -28,14 +28,15 @@
 - Include Order History for registered users.
 
 ## Current Progress
-- ![ Index page (phase-1) ](index1.png)
-- ![ Index page (phase-2) ](index3.png)
-- ![ Index page (phase-3) ](index4.png)
+- ![ Index page (phase-1) ](media/screenshots/index1.png)
+- ![ Index page (phase-2) ](media/screenshots/index3.png)
+- ![ Index page (phase-3) ](media/screenshots/index4.png)
 
-- ![Item details](item_details.png)
+- ![Item details](media/screenshots/delete_button.pngitem_details.png)
 
-- ![Add item](additem_form.png)
-- ![Update item](updateitem_form.png)
+- ![Add item](media/screenshots/additem_form.png)
+- ![Update item](media/screenshots/updateitem_form.png)
+- ![Delete item](media/screenshots/delete_form.png)
 
 
 
