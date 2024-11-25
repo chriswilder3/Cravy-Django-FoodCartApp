@@ -8,6 +8,20 @@
         Welcome to Cravy.
     </h1>
 
+
+    <div  id="delete-confirm-form" style="display: none; z-index: 10;"
+        class="fixed flex flex-col left-1/3 top-1/2 bg-gray-600 text-2xl mx-auto my-auto p-10 rounded">
+        Are you sure you want to delete?
+        <a href="{% url 'food:delete_item' item.id %}" 
+            class="bg-red-500 text-xl p-2 m-2  rounded" >
+            Yes
+        </a>
+        <a  id="dont-delete" type="button" href=""
+            class="bg-green-500 text-xl p-2 m-2 px-3 rounded">
+            No
+        </a>
+    </div>
+
     <div class=" m-4 mx-auto md:grid grid-cols-3 gap-3 justify-center items-center ">
 
             
@@ -22,11 +36,17 @@
                         <p class="bg-green-400 text-2xl font-bold rounded p-2 mr-4"> &#8377 {{item.price}} </p>
                     
             </div>
+
+
             <div class="col-span-1 flex flex-col justify-center text-xl text-center font-medium  ">
                 <a href="{% url 'food:update_item' item.id %}" class="flex-none min-w-40 p-2 px-4 my-2 mx-auto bg-sky-500 text-black
                             transition delay-60 hover:scale-105 hover:-translate-y-1 hover:bg-red-500 hover:text-white rounded-full">
                    <p>Update Item</p> 
                 </a>
+                <button id="delete-confirm-btn" type="button" class="flex-none min-w-40 p-2 px-4 my-2 mx-auto bg-sky-500 text-black
+                            transition delay-60 hover:scale-105 hover:-translate-y-1 hover:bg-red-500 hover:text-white rounded-full">
+                   <p>Delete Item</p> 
+                </button>
 
                 <a href="" class="flex-none min-w-40 p-2 px-4 my-2 mx-auto bg-orange-400 text-black 
                             transition delay-60 hover:scale-105 hover:-translate-y-1 hover:bg-red-500 hover:text-white rounded-full">
@@ -38,6 +58,18 @@
                 </a>
             </div>
             
+            <script>
+                const delete_confirm_btn = document.querySelector('#delete-confirm-btn')
+                delete_confirm_btn.addEventListener('click', function(){
+                    const delete_confirm_form = document.querySelector('#delete-confirm-form')
+                    delete_confirm_form.style.display = 'block';
+                })
+                const dont_delete_btn = document.querySelector('#dont-delete')
+                dont_delete_btn.addEventListener('click', function(){
+                    const delete_confirm_form = document.querySelector('#delete-confirm-form')
+                    delete_confirm_form.style.display = 'none';
+                })
+            </script>
             
     </div>
 {% endblock %}

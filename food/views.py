@@ -124,3 +124,7 @@ def update_item( request, id):
             }
             return render( request, 'add_item.html', context)
 
+def delete_item( request, id):
+    item = Item.objects.get( id=id)
+    item.delete()
+    return redirect('food:home')
