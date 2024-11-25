@@ -30,6 +30,7 @@
 ## Current Progress
 - ![ Index page (phase-1) ](index1.png)
 - ![ Index page (phase-2) ](index3.png)
+- ![ Index page (phase-3) ](index4.png)
 
 - ![Item details](item_details.png)
 
