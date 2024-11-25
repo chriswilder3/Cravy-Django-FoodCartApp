@@ -32,9 +32,9 @@
 - ![ Index page (phase-2) ](media/screenshots/index3.png)
 - ![ Index page (phase-3) ](media/screenshots/index4.png)
 
-- ![Item details](media/screenshots/delete_button.pngitem_details.png)
+- ![Item details](media/screenshots/delete_button.png)
 
-- ![Add item](media/screenshots/additem_form.png)
+- ![Add item](media/screenshots/additem2.png)
 - ![Update item](media/screenshots/updateitem_form.png)
 - ![Delete item](media/screenshots/delete_form.png)
 
