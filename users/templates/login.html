@@ -5,6 +5,10 @@
     {% comment %} Since its a authview directed template, We can have only 2 fields
     in login form.  {% endcomment %}
 
+    {% if form.errors %}
+    <p class="mx-auto text-red-400 mb-2">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
     <form action="{% url 'users:login' %}" method="post"
         class="flex flex-col justify-center bg-red-500 mb-2 p-4 mx-auto  w-1/3 text-md text-black text-lg font-medium 
         *:p-2 rounded-md " >

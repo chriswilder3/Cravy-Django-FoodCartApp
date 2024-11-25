@@ -22,8 +22,9 @@ from django.contrib.auth import views as AuthViews
 # username and password only. 
 
 # Again Note that our work is not yet done. Even though the form will show up
-# and login , django tries to login to accnt profile url that is predefined
-# We need to change this to go to page of our choice
+# and login , after login django tries to go to accnt profile url that is predefined (/account/profile)
+# We need to change this to go to page of our choice.
+# For now we will set LOGIN_REDIRECT_URL in the settings.py
 
 app_name = 'users'
 
@@ -31,10 +32,10 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
 
     path('login/', AuthViews.LoginView.as_view( 
-        template_name ='login.html', next_page='/'), name='login'),
+        template_name ='login.html'), name='login'),
     
     path('logout/', AuthViews.LogoutView.as_view( 
-        template_name ='login.html', next_page='/'), name= 'logout' ),
+        template_name ='logout.html'), name= 'logout' ),
 
 ]
 
