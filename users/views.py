@@ -6,6 +6,11 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth.forms import UserCreationForm
 
+# Now that we created our own user registration form, We can use that instead 
+# of above one.
+
+from .forms import RegisterForm
+
 from django.contrib import messages
 # messages framework is used to display cookie or session based
 # flash messages. Ex: After submitting form
@@ -16,12 +21,16 @@ from django.contrib import messages
 
 def signup( request):
     if request.method == 'GET':
-        form = UserCreationForm()
+        form = RegisterForm()
         # Be default the usercreationform has 3 fields
         # username, password1 and password2
+        # but we extended it by creating our own form RegisterForm
+        # Which takes in email as well. So make sure to change the
+        # template accordingly
+
         return render( request, 'signup.html', {'form':form})
     else:
-        form = UserCreationForm( request.POST)
+        form = RegisterForm( request.POST)
         if form.is_valid():
             # Now that the form is valid, We will display a success message
             # The messages framework allows us to temporarily store 

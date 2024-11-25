@@ -2,12 +2,12 @@
 
 {% block content %} 
 
-    
+    {% comment %} Since its a authview directed template, We can have only 2 fields
+    in login form.  {% endcomment %}
 
-    <form action="{% url 'users:signup' %}" method="post"
+    <form action="{% url 'users:login' %}" method="post"
         class="flex flex-col justify-center bg-red-500 mb-2 p-4 mx-auto  w-1/3 text-md text-black text-lg font-medium 
-        *:p-2 rounded-md "
-        >
+        *:p-2 rounded-md " >
         
 
         {% csrf_token %}
@@ -17,20 +17,12 @@
         {{ form.username }}
         {{ form.username.errors}}
 
-        <label for="{{form.email.id_for_label}}" class="text-amber-300">
-            Enter an email : </label>
-        {{ form.email }}
-        {{ form.email.errors}}
-
-        <label for="{{form.password1.id_for_label}}" class="text-amber-300">
+    
+        <label for="{{form.password.id_for_label}}" class="text-amber-300">
             Enter a password : </label>
-        {{ form.password1 }}
-        {{ form.password1.errors}}
+        {{ form.password }}
+        {{ form.password.errors}}
 
-        <label for="{{form.password2.id_for_label}}" class="text-amber-300">
-            Confirm your password : </label>
-        {{ form.password2 }}
-        {{ form.password2.errors}}
 
         <button type="submit" class="text-white my-2 bg-slate-700 rounded-full 
             hover:bg-slate-900  hover:scale-105">

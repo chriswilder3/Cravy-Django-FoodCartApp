@@ -12,10 +12,16 @@ from django.contrib.auth.models import User
 # meta class inside them that takes 2 things, model and fields.
 # Now since we still dont have our own model of user(yet), we
 # can use the User model from auth.models.
-# Note that this User model also has limited fields. If we were 
-# to include such uncommon fields associated with users
-# ( ex :profile image, descritipn, salary etc). We will need to 
-# provide our own models.
+
+# Note that usercreationform is specifically designed to work with User model.
+# By linking the RegisterForm to the User model, we leverage Django's
+# built-in authentication system. This avoids the need to build our 
+# own user management logic from scratch. 
+# The UserCreationForm automatically uses the password validation rules
+# defined in AUTH_PASSWORD_VALIDATORS.
+
+
+
 
 # And finally we need forms variable of django to create 
 # custom form fields
