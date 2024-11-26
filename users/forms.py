@@ -28,7 +28,7 @@ from django.contrib.auth.models import User
 from django import forms
 
 class RegisterForm( UserCreationForm):
-    # Define here, extra custom fields , NOT inside the parent class
+    # Define here, extra custom fields which are NOT inside the parent class
     email = forms.EmailField()
 
     class Meta:

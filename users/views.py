@@ -71,6 +71,6 @@ def signup( request):
             form.save() 
             # Note: Just like any other form, its necessarty to save
             # the usercontent form also
-            return redirect('food:home')
+            return redirect('users:login')
         else:
             return render(request, 'signup.html', {'form': form})

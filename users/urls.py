@@ -36,6 +36,9 @@ urlpatterns = [
     
     path('logout/', AuthViews.LogoutView.as_view( 
         template_name ='logout.html'), name= 'logout' ),
+        # Here note that logoutview also handles only post request like
+        # a form( which is weird).So make sure to put the logout button
+        # inside a form post
 
 ]
 

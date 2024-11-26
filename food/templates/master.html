@@ -53,10 +53,18 @@
                     transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
             Sign up
         </a>
-        <a href="{% url 'users:login' %}" class="border-2 border-transparent mr-20 p-1
-                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded">
+        <a href="{% url 'users:login' %}" class="border-2 border-transparent p-1
+                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
             Login
         </a>
+        <form action="{% url 'users:logout' %}" method="post">
+           {% csrf_token %}
+            <button type="submit" class="border-2 border-transparent mr-20 p-1
+                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded">
+            Logout
+            </button>
+        </form>
+        
     </nav>
 
     {% if messages %}
