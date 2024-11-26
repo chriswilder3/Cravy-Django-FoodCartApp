@@ -25,6 +25,7 @@
             background:linear-gradient(to bottom, #ff7e5f, #feb47b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-family: "DM Sans", sans-serif;
         }
 
     </style>
@@ -49,21 +50,34 @@
                     transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
             Add Item
         </a>
+
+    {% if user.is_authenticated %}
+
+        <a href="{% url 'users:profile' %}" class="border-2 border-transparent p-1
+            transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
+            {{user.username}}
+        </a>
+
+        <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="border-2 border-transparent mr-20 p-1
+                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded">
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
         <a href="{% url 'users:signup' %}" class="border-2 border-transparent p-1
-                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
+             transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
             Sign up
         </a>
         <a href="{% url 'users:login' %}" class="border-2 border-transparent p-1
-                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
+            transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
             Login
         </a>
-        <form action="{% url 'users:logout' %}" method="post">
-           {% csrf_token %}
-            <button type="submit" class="border-2 border-transparent mr-20 p-1
-                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded">
-            Logout
-            </button>
-        </form>
+       
+    {% endif %}
         
     </nav>
 
@@ -75,7 +89,7 @@
     <!-- Note that this message is temporary and will fade after refresh or when
     We go to another page. ie, its only valid for 1 request. -->
 
-    <h1 class="welcome text-4xl  m-4 mb-2 font-bold m ">
+    <h1 class="welcome text-4xl mx-auto  m-4 mb-2 font-bold m ">
        Just Cravy now.
     </h1>
     {% block content %}

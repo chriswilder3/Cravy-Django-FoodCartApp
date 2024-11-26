@@ -40,5 +40,6 @@ urlpatterns = [
         # a form( which is weird).So make sure to put the logout button
         # inside a form post
 
+    path('profile/', views.profile, name='profile'),
 ]
 

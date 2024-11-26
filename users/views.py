@@ -74,3 +74,6 @@ def signup( request):
             return redirect('users:login')
         else:
             return render(request, 'signup.html', {'form': form})
+
+def profile( request):
+    return render( request, 'profile.html')
