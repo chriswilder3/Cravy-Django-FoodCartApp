@@ -87,8 +87,10 @@ def profile( request):
     # Since its linked with Profile also
     # but first know that we can access the current logged in user 
     # using request.user
-    uname = request.user.username
-    user = User.objects.get( username = uname)
+    # uname = request.user.username
+    # user = User.objects.get( username = uname)
+
     # Note that passing user like this is not necessary
     # if logged in, the user model is directly accessible inside template
-    return render( request, 'profile.html', {'user':user})
+    # Hence lets leave it at that
+    return render( request, 'profile.html')
