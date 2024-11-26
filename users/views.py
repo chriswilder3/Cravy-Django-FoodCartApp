@@ -18,7 +18,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -85,4 +85,10 @@ def profile( request):
 
     # Now to display all user info, we can use authuser itself directly
     # Since its linked with Profile also
-    return render( request, 'profile.html')
+    # but first know that we can access the current logged in user 
+    # using request.user
+    uname = request.user.username
+    user = User.objects.get( username = uname)
+    # Note that passing user like this is not necessary
+    # if logged in, the user model is directly accessible inside template
+    return render( request, 'profile.html', {'user':user})

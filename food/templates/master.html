@@ -89,11 +89,12 @@
     <!-- Note that this message is temporary and will fade after refresh or when
     We go to another page. ie, its only valid for 1 request. -->
 
+    <div class="bg-gradient-to-b py-1 from-slate-700 to-rose-800">
+
+    {% block content %}
     <h1 class="welcome text-5xl mx-auto  m-4 mb-2 font-bold m ">
        Just Cravy now.
     </h1>
-    {% block content %}
-    
     
     <div class=" m-4 grid grid-cols-4 justify-center items-center ">
 
@@ -112,5 +113,6 @@
             {% endfor %}
     </div>
     {% endblock %}
+    </div>
 </body>
 </html>

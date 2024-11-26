@@ -49,3 +49,7 @@ if settings.DEBUG:
     # Whenever user requests for media with given url = MEDIA_URL
     # The path corresponding to that media is served , so 
     # That the media is displayed back to user/template.
+
+    # Why this is is all done? Because its ineffiecient to store
+    # media files into DB, instead we store them in filesystems of 
+    # our computer (during development ) or filesystems of servers.
