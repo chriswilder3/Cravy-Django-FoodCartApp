@@ -18,6 +18,8 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
+
+
 # Create your views here.
 
 def signup( request):
@@ -80,4 +82,7 @@ def signup( request):
 def profile( request):
     # We need to allow only authenticated users to access this profile page
     # Hence lets add auth decorator to this view called @login_required
+
+    # Now to display all user info, we can use authuser itself directly
+    # Since its linked with Profile also
     return render( request, 'profile.html')

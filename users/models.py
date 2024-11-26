@@ -22,8 +22,24 @@ class Profile( models.Model):
     # It ensures that each user can have only one associated Profile, 
     # and vice versa.
 
-    # So now we can access the fields of User : username and email (not password though)
-    # using prof_object.user.username/ prof_object.user.email anywhere
+    # Accessing Profile Data in the view/shell:
+    # user = User.objects.get(username="example_user")
+    # profile = user.profile  # Access the related profile
+
+    # Even though Profile is a separate model, the reason you 
+    # can access it through user.profile is because of the OneToOneField
+    #  relationship in Django, which establishes a reverse relationship
+    #  between the two models.
+    #  It allows us to navigate from the related model (User) back to 
+    # the model containing the OneToOneField (Profile).
+
+    # The reverse relationship (user.profile) is possible because Django
+    #  dynamically adds this attribute(profile, by default) to the User 
+    # model during runtime
+
+    # This behavior is controlled by the related_name attribute of the 
+    # OneToOneField. If you don’t specify related_name, Django uses the 
+    # lowercase name of the related model (profile in this case) by default.
 
     location = models.TextField( null = True)
 
@@ -31,3 +47,8 @@ class Profile( models.Model):
 
     def __str__(self):
         return f' {self.user.username}'
+
+    # Overall, to access authuser fields username/email then 
+    #       user.username, user.email is enough
+    # But to access profile fields then 
+    #       user.profile.image, user.profile.location are used.
