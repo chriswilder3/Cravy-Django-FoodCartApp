@@ -10,8 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
@@ -35,16 +33,16 @@
 <body class=" text-white flex flex-col bg-gradient-to-b from-slate-800 to-zinc-700 bg-no-repeat
     min-h-screen">
     <!-- bg-gradient-to-b from-slate-800 to-zinc-700 bg-no-repeat -->
-    <nav class="flex flex-row m-4 px-4 py-3 text-xl gap-7  items-center">
+    <nav class="md:flex flex-row m-4 px-4 py-3 text-xl gap-7  items-center">
 
         <a href="{% url 'food:home' %}" class=" border-2 border-transparent 
                     transition delay-60 hover:-translate-y-1  hover:border-white rounded ">
             <img class="w-32 h-24" src="{% static 'logo3.png' %}" alt="">
         </a>
-        <a href=" " class=" 
+        <!-- <a href=" " class=" 
                     transition delay-60 rotate-90 mr-3 hover:scale-110 hover:animate-pulse ">
-            | | |
-        </a>
+            |||
+        </a> -->
         
         <a href="{% url 'food:add_item' %}" class="border-2 border-transparent ml-auto p-1
                     transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
@@ -52,20 +50,22 @@
         </a>
 
     {% if user.is_authenticated %}
-
-        <a href="{% url 'users:profile' %}" class="border-2 border-transparent p-1
-            transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded ">
+        <div class="flex flex-col bg-slate-700  p-2 text-center rounded-md ">
             {{user.username}}
-        </a>
+            <a href="{% url 'users:profile' %}"  class="border-2 border-transparent p-1 my-2
+                transition delay-75 hover:scale-105 hover:border-white rounded mx-auto min-w-48
+                bg-slate-500 ">
+                Dashboard
+            </a>
 
-        <form action="{% url 'users:logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="border-2 border-transparent mr-20 p-1
-                    transition delay-75 hover:-translate-y-2 hover:scale-110 hover:border-white rounded">
-                Logout
-            </button>
-        </form>
-
+            <form action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="border-2 border-transparent  p-1 bg-slate-500
+                        transition delay-75  min-w-48 mx-auto hover:scale-105 hover:border-white rounded">
+                    Logout
+                </button>
+            </form>
+        </div>
     {% else %}
 
         <a href="{% url 'users:signup' %}" class="border-2 border-transparent p-1
@@ -89,7 +89,7 @@
     <!-- Note that this message is temporary and will fade after refresh or when
     We go to another page. ie, its only valid for 1 request. -->
 
-    <h1 class="welcome text-4xl mx-auto  m-4 mb-2 font-bold m ">
+    <h1 class="welcome text-5xl mx-auto  m-4 mb-2 font-bold m ">
        Just Cravy now.
     </h1>
     {% block content %}

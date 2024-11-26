@@ -16,6 +16,7 @@ from django.contrib import messages
 # flash messages. Ex: After submitting form
 # learn more here : https://docs.djangoproject.com/en/5.1/ref/contrib/messages/
 
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -75,5 +76,8 @@ def signup( request):
         else:
             return render(request, 'signup.html', {'form': form})
 
+@login_required
 def profile( request):
+    # We need to allow only authenticated users to access this profile page
+    # Hence lets add auth decorator to this view called @login_required
     return render( request, 'profile.html')

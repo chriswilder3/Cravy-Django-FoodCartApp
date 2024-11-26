@@ -127,6 +127,10 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 LOGIN_REDIRECT_URL = 'food:home'
 
+# Sets the path to search for login page when Django tries to 
+# redirect the anonymous users. If we dont set this for our own login pages
+# directory , Django will only search in account/login/. Hence set it.
+LOGIN_URL = 'users:login'
 
 
 # Default primary key field type
