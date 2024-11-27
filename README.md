@@ -38,6 +38,64 @@
 - ![Update item](media/screenshots/updateitem_form.png)
 - ![Delete item](media/screenshots/delete_form.png)
 
+## Project structure
+```plainetext
+
+📄 README.md
+📄 cheese_burger.jpg
+📂 cravy
+    📄 __init__.py
+    📂 __pycache__
+    📄 asgi.py
+    📄 settings.py
+    📄 urls.py
+    📄 wsgi.py
+📄 dashboard.png
+📄 db.sqlite3
+📄 farmhouse_pizza.png
+📂 food
+    📄 __init__.py
+    📂 __pycache__
+    📄 admin.py
+    📄 apps.py
+    📄 forms.py
+    📂 migrations
+    📄 models.py
+    📂 static
+    📂 templates
+    📄 tests.py
+    📄 urls.py
+    📄 views.py
+📄 grilledveg_tacos.png
+📄 logo3.png
+📄 manage.py
+📂 media
+    📄 placeholder.png
+    📂 product_images
+    📄 profile.png
+    📂 profile_pics
+    📂 screenshots
+📄 paneer_curry.png
+📄 profile.png
+📂 static
+    📂 admin
+    📄 logo.png
+    📄 logo2.png
+    📄 logo3.png
+📂 users
+    📄 __init__.py
+    📂 __pycache__
+    📄 admin.py
+    📄 apps.py
+    📄 forms.py
+    📂 migrations
+    📄 models.py
+    📄 signals.py
+    📂 templates
+    📄 tests.py
+    📄 urls.py
+    📄 views.py
+```
 
 
 
