@@ -16,7 +16,7 @@
 
 # Model signals are sent by various model methods like __init__() or save()
 # that you can override in your own code.
-# For save() there pre_save() or post_save() methods
+# For save(), there pre_save or post_save signals
 
 from django.db.models.signals import post_save
 # We want to create the profile after the form.save() is executed, 
@@ -51,29 +51,33 @@ from django.dispatch import receiver
 # def my_handler(sender, **kwargs):
 #     some_code..
 
-# Note that **kwargs means, for this handler function, We can define
-# and pass any number and type of arguments, as long as 1st positional
-# argument is sender.
+# Note that **kwargs means, for this handler function, there may be
+# multiple params sent by the sender. 1st argument to handler is always sender.
+# But starting from second, We can receive any params that is avialable from
+# sender by mentioning them first, and keep the rest as **kwargs
+# Ex : post_save signal comes with many params, lets assume we want instance 
+# only. We can say now
+# def my_hanlder( sender, instance, **kwargs): 
 
 from .models import Profile
 # obviously we need this.
 
 # First of all note that, Profile has same fields as User except 2 additional
 # fields which are optional location and image ( filled null and default)
-# Hence, the instance of the form received in signup view, 
-# which eventuaally got saved into User model is also passed 
-# here after the save,so that Profile model is saved. We can worry about
-# optional fields later.
+# Hence, the instance of User model (which gets saved after registerform is 
+# saved) is passed here so that correspnding Profile can be generated.
+#  We can worry about optional fields later.
 
 @receiver( post_save, sender = User)
 def build_profile( sender, instance, created, **kwargs):
     # Here instance is the instance of User just saved ,
     # created is a bool to indicate whether the model was saved 
-    # corretly. **kwargs are any extra params. 
+    # correctly. **kwargs are any extra params. 
     if created:
         Profile.objects.create(user = instance)
-        # If User model was successful, also create an instance(row)
-        #  of profile using instance of saved User model
+        # If User instance was being created for first time, 
+        # Use that instance to create a new instance(row)
+        #  of profile also.
 
     # This ensures that the Profile table is always populated in sync with
     # the User table.
@@ -84,7 +88,8 @@ def build_profile( sender, instance, created, **kwargs):
 # must also be changed right?
 
 # Hence Whenever any instance of User gets saved (after initial creation)
-# We must save the corresponding profile table with that instance. 
+# We must save the corresponding profile instance corresponding to that User
+# instance. 
 # But note that, to access profile of a user that already created,
 # We can call user.profile like before, but here instance.profile instead.
 # Hence Lets create a receiver which does instance.profile.save() also.
@@ -94,7 +99,7 @@ def save_profile( sender, instance, created, **kwargs):
     instance.profile.save()
 
 # Work is not over yet. We still need to include these callbacks in the
-# 
+# ready funcn of AppConfig in apps.py
 
 # Since signals are sent to all receivers on every trigger, Why doesn't
 # build_profile create issues even when we just made changes to existing 

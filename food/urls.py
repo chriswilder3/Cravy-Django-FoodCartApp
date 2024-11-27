@@ -10,8 +10,9 @@ app_name = 'food' # This is used to refer to names of paths
                  # Remember its :(colon) not .
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('item/', views.item, name = 'item'),
+    # path('', views.home, name='home'),
+    path('', views.IndexListView.as_view(), name='home'), # custom class view 
+
     path('item_details/<int:id>', views.item_details, name='item_details'),
     path('item/add', views.add_item, name='add_item'),
     path('item/update_item/<int:id>', views.update_item, name='update_item'),
