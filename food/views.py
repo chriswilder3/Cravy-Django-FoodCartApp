@@ -5,7 +5,8 @@ from .models import Item
 from .forms import AddItemForm
 
 from django.views.generic.list import ListView
-# We will be creating classbased ListView.
+# We will be creating classbased ListViews , detail views
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -50,6 +51,24 @@ def item_details( request, id):
     }
     return render( request, 'item_details.html', context)
 
+class FoodDetails(DetailView):
+    model = Item
+    template_name = 'item_details.html'
+    # unlike list view, we have a problem here. How to pass id to this view
+    
+    # Note that in models, we can access primary key fields using pk also
+    # ex: to get item instance use : Item.objects.get(pk = id)
+    # The DetailView uses this automatically. Hence We only need to
+    # change the URL from item_details/<int:id> to item_details/<int:pk>
+    # Also inside the template each item is refered as {{object}} by default.
+    # This changing to pk is necessary
+
+    # In Django's DetailView, specifying the context_object_name is not strictly necessary,
+    # but it can be useful in some cases. By default, the context object is passed to the 
+    # template with the name of the model's lowercase name (e.g., if the model 
+    # is Book, the context object would be named book).
+
+    # So in template it recognizes both {{object}} and {{item}}
 
 
 def add_item(request):
