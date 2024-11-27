@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 from django.contrib.auth.models import User
 
@@ -35,7 +35,7 @@ class Item(models.Model):
     def get_absolute_url(self):
         return reverse("food:item_details", kwargs = {'pk':self.pk})
 
-    # reverse() is used to generate a URL based on the name of a view 
+    # reverse() is used to generate a URL based on the name of a urlpattern 
     # in your urlpatterns. It replaces the need to hardcode URLs and 
     # ensures that if you change the URL pattern later, the function will
     #  still generate the correct URL.

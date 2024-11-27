@@ -134,7 +134,10 @@ class CreateItem( CreateView):
         # We added the id of that user to the posted by of form.
         # Now save it but make sure to pass the instance of the form
         # we just modified.
-        super().form_valid(form)
+        return super().form_valid(form)
+        # Make sure the return it, since we want to return the form
+        # validated by its parent as a result.
+
     # Finally change the urls.py to include this CreateItem
 
 def update_item( request, id):
