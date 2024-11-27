@@ -7,6 +7,10 @@ from .forms import AddItemForm
 from django.views.generic.list import ListView
 # We will be creating classbased ListViews , detail views
 from django.views.generic.detail import DetailView
+# This is needed for item_detail page
+from django.views.generic.edit import CreateView
+# the generic.edit views are for CUD operations
+
 
 # Create your views here.
 
@@ -69,6 +73,8 @@ class FoodDetails(DetailView):
     # is Book, the context object would be named book).
 
     # So in template it recognizes both {{object}} and {{item}}
+    # Next we will create classbased view for add_item also, that 
+    # will automatically create posted_by field also.
 
 
 def add_item(request):
@@ -106,6 +112,30 @@ def add_item(request):
 
             return render(request, 'add_item.html', {'form':form, 'update':False})
 
+class CreateItem( CreateView):
+    # Provides a form to create a new object and save it to the database.
+    model = Item
+    fields = ['name','description','price','image']
+    template_name = 'add_item.html'
+    # Note that We won't include posted_by in fields since we want to
+    # pass it automatically.
+
+    # There are multiple methods associated with CreateView. 
+    # The form_valid() is executed when form is valid. It is equivalent
+    # checking with " if form.is_valid():", 
+    # It saves the object associated with the form by calling form.save() 
+    # internally through super().form_valid(form). We can do some additional
+    # logic before it saves.
+
+    def form_valid(self, form):
+        # the arg form gives access to form that was submitted & verified
+        # has form.instance gives access to the model instance associated with the form.
+        form.instance.posted_by = self.request.user
+        # We added the id of that user to the posted by of form.
+        # Now save it but make sure to pass the instance of the form
+        # we just modified.
+        super().form_valid(form)
+    # Finally change the urls.py to include this CreateItem
 
 def update_item( request, id):
     item = Item.objects.get( id = id)

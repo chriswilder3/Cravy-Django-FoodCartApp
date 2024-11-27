@@ -21,7 +21,7 @@ class Item(models.Model):
     # Since there are some unlinked items in the DB, we will let 
     # them have posted_by as 1 for now.(user :admin )
 
-    # Note that We need to modify add_item form, so that it will automatically
+    # Note that We need to modify add_item view, so that it will automatically
     # submit the user who added it, to this posted_by.
 
 # -------------------------------------------------
